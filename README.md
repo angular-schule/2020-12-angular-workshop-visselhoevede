@@ -101,7 +101,7 @@ Bei Fragen wende dich einfach direkt an das Angular-Schule-Team:
 
 <img src="http://assets.angular.schule/logo-angular-schule.png" height="60">
 
-### &copy; 2020 https://angular.schule | Stand: 01.12.2021
+### &copy; 2020 https://angular.schule | Stand: 01.12.2020
 
 
 
