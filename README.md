@@ -2,6 +2,8 @@
 
 #### **von Johannes Hoppe**
 
+[![Join the chat at https://gitter.im/angular-schule/2020-12-visselhoevede](https://badges.gitter.im/angular-schule/2020-12-visselhoevede.svg)](https://gitter.im/angular-schule/2020-12-visselhoevede?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 <hr>
 
 **Herzlich Willkommen – und schön, dass du dabei bist!**  
