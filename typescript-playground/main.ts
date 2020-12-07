@@ -1,7 +1,3 @@
-class Test {
-    constructor(private foo: number) {
-        console.log('😎', this.foo);
-    }
-}
+import { Test } from "./test";
 
 var test = new Test(42);
