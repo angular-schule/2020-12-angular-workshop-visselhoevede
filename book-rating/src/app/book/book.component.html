@@ -1,10 +1,27 @@
-<h2>{{ book.title }} - {{ book.rating }}</h2>
+<div class="card mb-4">
+  <div class="card-body bg-light">
 
-<p>
-  {{ book.description }}
-</p>
+    <img src="https://api.angular.schule/avatar/{{ book.rating }}" class="img-thumbnail float-right">
 
-<!-- worst practise -- mutating objects that are not supposed to mutate -->
+    <div class="card-title">
+      <h2>
+        {{ book.title }}
+        <span class="badge badge-secondary">
+          {{ book.rating }}
+        </span>
+      </h2>
+    </div>
 
-<button (click)="book.rating = book.rating - 1">-1</button>
-<button (click)="book.rating = book.rating + 1">+1</button>
+    <p>
+      {{ book.description }}
+    </p>
+
+    <!-- worst practise -- mutating objects that are not supposed to mutate -->
+
+    <button class="btn btn-primary mr-2"
+      (click)="book.rating = book.rating - 1">-1</button>
+
+    <button class="btn btn-primary"
+      (click)="book.rating = book.rating + 1">+1</button>
+  </div>
+</div>
