@@ -14,7 +14,9 @@ Verwende dazu:
 -->
 <hr>
 
-<div *ngFor="let b of books, even as e"
-  [ngClass]="???">
+<div class="p-2"
+  *ngFor="let b of books; even as e"
+  [ngClass]="{ 'bg-danger': e }"
+>
   <br-book [book]="b"></br-book>
 </div>
