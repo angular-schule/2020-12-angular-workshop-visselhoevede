@@ -3,3 +3,8 @@
 <p>
   {{ book.description }}
 </p>
+
+<!-- worst practise -- mutating objects that are not supposed to mutate -->
+
+<button (click)="book.rating = book.rating - 1">-1</button>
+<button (click)="book.rating = book.rating + 1">+1</button>
