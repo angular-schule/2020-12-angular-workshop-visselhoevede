@@ -2,3 +2,19 @@
   *ngFor="let b of books"
   [book]="b"
 ></br-book>
+
+
+<!-- hands on!
+Zeige die div-Elemente abwechselnt in Grau und nicht Grau an
+Verwende dazu:
+
+- die Css-Klasse bg-light
+- die Direktive ngClass
+- die *ngFor Variable even
+-->
+<hr>
+
+<div *ngFor="let b of books, even as e"
+  [ngClass]="???">
+  <br-book [book]="b"></br-book>
+</div>
