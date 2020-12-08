@@ -10,4 +10,8 @@ export class BookComponent {
 
   @Input()
   book: Book;
+
+  isAngular(): boolean {
+    return this.book.title === 'Angular';
+  }
 }
