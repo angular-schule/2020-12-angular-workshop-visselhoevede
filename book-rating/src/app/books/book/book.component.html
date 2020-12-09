@@ -11,7 +11,9 @@
       <h2>
         {{ book.title }}
         <span class="badge badge-secondary">
-          {{ book.rating }}
+          <ng-container *ngFor="let i of stars">
+            ⭐️
+          </ng-container>
         </span>
       </h2>
     </div>

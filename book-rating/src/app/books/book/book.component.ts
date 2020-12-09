@@ -14,4 +14,8 @@ export class BookComponent {
   isAngular(): boolean {
     return this.book.title === 'Angular';
   }
+
+  get stars(): undefined[] {
+    return new Array(this.book.rating);
+  }
 }
