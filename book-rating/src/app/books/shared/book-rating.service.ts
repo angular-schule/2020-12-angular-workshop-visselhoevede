@@ -6,8 +6,8 @@ import { Book } from './book';
 })
 export class BookRatingService {
 
-  readonly minValue = 1;
-  readonly maxValue = 5;
+  private readonly minValue = 1;
+  private readonly maxValue = 5;
 
   rateDown(book: Book): Book {
     const rating = Math.max(this.minValue, book.rating - 1);
