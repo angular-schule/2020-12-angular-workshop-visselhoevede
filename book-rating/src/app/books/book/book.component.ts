@@ -25,6 +25,7 @@ export class BookComponent {
     this.rateUp.emit(this.book);
   }
 
+
   isAngular(): boolean {
     return this.book.title === 'Angular';
   }
