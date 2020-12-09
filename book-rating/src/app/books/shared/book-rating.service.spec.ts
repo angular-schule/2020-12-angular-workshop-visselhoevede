@@ -3,7 +3,7 @@ import { Book } from './book';
 
 import { BookRatingService } from './book-rating.service';
 
-fdescribe('BookRatingService with Rating like an Amazon [LD-1332]', () => {
+describe('BookRatingService with Rating like an Amazon [LD-1332]', () => {
 
   // arrange
   let service: BookRatingService;
