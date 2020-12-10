@@ -16,26 +16,27 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.books = [
-      {
-        isbn: '000',
-        title: 'Angular',
-        description: 'Tolles Buch',
-        rating: 5
-      },
-      {
-        isbn: '111',
-        title: 'AngularJs',
-        description: 'Altes Buch',
-        rating: 3
-      },
-      {
-        isbn: '222',
-        title: 'React',
-        description: 'Olles Buch',
-        rating: 1
-      },
-    ];
+    this.books = [{
+      title: 'Angular',
+      isbn: '9783864906466',
+      description: 'Beschreibung',
+      rating: 5,
+      firstThumbnailUrl: 'http://covers.openlibrary.org/b/isbn/9783864906466-M.jpg'
+    },
+    {
+      title: 'Die Stadt der träumenden Bücher',
+      isbn: '9783492045490',
+      description: 'Super',
+      rating: 5,
+      firstThumbnailUrl: 'http://covers.openlibrary.org/b/isbn/9783492045490-M.jpg'
+    },
+    {
+      title: 'Der Herr der Ringe',
+      isbn: '9783608939842',
+      description: 'Toll',
+      rating: 5,
+      firstThumbnailUrl: 'http://covers.openlibrary.org/b/isbn/9783608960358-M.jpg'
+    }];
   }
 
   doRateDown(book: Book): void {
