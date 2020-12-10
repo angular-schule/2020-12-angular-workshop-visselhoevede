@@ -29,4 +29,19 @@ export class CreateBookComponent {
     return control.invalid && control.hasError(code);
   }
 
+  submitBook() {
+    var newBook = {
+      ...this.bookForm.value,
+      rating: 1
+    }
+
+    // HANDS ON
+    // 1. Erzeuge einen EventHandler mit dem Namen `create`
+    // 2. Versende das neue Buch über diesen EventHandler
+    // 3. Aboniere dich auf das Event im Dashboard
+    // 4. Füge das neue Buch dem Buch-Array hinzu (immutable!)
+
+    this.bookForm.reset();
+  }
+
 }
