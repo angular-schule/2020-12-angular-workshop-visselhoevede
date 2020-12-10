@@ -3,8 +3,8 @@
   [book]="b"
   (rateDown)="doRateDown($event)"
   (rateUp)="doRateUp($event)"
-  [disableDownButton]="br.disableDownButton"
-  [disableUpButton]="br.disableUpButton"
+  [disableDownButton]="disableDownButton(b)"
+  [disableUpButton]="disableUpButton(b)"
 ></br-book>
 
 Anzahl der Bücher: {{ books.length }}

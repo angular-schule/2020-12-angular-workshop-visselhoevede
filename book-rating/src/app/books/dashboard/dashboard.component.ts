@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
   books: Book[];
 
-  constructor(public br: BookRatingService) {
+  constructor(private br: BookRatingService) {
 
   }
 
@@ -53,5 +53,13 @@ export class DashboardComponent implements OnInit {
     this.books = this.books
       .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
       .sort((a, b) => b.rating - a.rating);
+  }
+
+  disableDownButton(book: Book): boolean {
+    return this.br.disableDownButton(book);
+  }
+
+  disableUpButton(book: Book): boolean  {
+    return this.br.disableUpButton(book);
   }
 }
