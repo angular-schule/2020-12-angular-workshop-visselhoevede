@@ -17,4 +17,16 @@ export class CreateBookComponent {
     description: new FormControl(),
   });
 
+  isInvalid(name: string): boolean {
+    const control = this.bookForm.get(name);
+    return control.invalid && control.touched;
+  }
+
+  // name: isbn / title
+  // code: required / minlength
+  hasError(name: string, code: string): boolean {
+    const control = this.bookForm.get(name);
+    return control.invalid && control.hasError(code);
+  }
+
 }
