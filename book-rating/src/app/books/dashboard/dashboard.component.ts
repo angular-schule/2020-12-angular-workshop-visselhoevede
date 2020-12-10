@@ -65,4 +65,8 @@ export class DashboardComponent implements OnInit {
   disableUpButton(book: Book): boolean  {
     return this.br.disableUpButton(book);
   }
+
+  addBook(newBook: Book) {
+    this.books = [...this.books, newBook];
+  }
 }
