@@ -25,9 +25,13 @@
     <!-- worst practise -- mutating objects that are not supposed to mutate -->
 
     <button class="btn btn-primary mr-2"
-      (click)="doRateDown()">-1</button>
+      (click)="doRateDown()"
+      [disabled]="disableDownButton(book)"
+    >-1</button>
 
     <button class="btn btn-primary"
-      (click)="doRateUp()">+1</button>
+      (click)="doRateUp()"
+      [disabled]="disableUpButton(book)"
+      >+1</button>
   </div>
 </div>

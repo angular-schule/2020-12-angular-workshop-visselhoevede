@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Book } from './book';
 
+const minValue = 1;
+const maxValue = 5;
+
 @Injectable({
   providedIn: 'root'
 })
 export class BookRatingService {
 
-  private readonly minValue = 1;
-  private readonly maxValue = 5;
 
   rateDown(book: Book): Book {
-    const rating = Math.max(this.minValue, book.rating - 1);
+    const rating = Math.max(minValue, book.rating - 1);
     return {
       ...book,
       rating,
@@ -18,10 +19,18 @@ export class BookRatingService {
   }
 
   rateUp(book: Book): Book {
-    const rating = Math.min(this.maxValue, book.rating + 1);
+    const rating = Math.min(maxValue, book.rating + 1);
     return {
       ...book,
       rating
     };
+  }
+
+  disableDownButton(book: Book) {
+    return book.rating <= minValue;
+  }
+
+  disableUpButton(book: Book) {
+    return book.rating >= maxValue;
   }
 }

@@ -17,6 +17,12 @@ export class BookComponent {
   @Output()
   rateUp = new EventEmitter<Book>();
 
+  @Input()
+  disableDownButton = (book: Book) => false;
+
+  @Input()
+  disableUpButton = (book: Book) => false;
+
   doRateDown(): void {
     this.rateDown.emit(this.book);
   }
