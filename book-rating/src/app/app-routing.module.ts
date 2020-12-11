@@ -7,7 +7,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    enableTracing: true,
+    enableTracing: false,
     // scrollPositionRestoration: 'enabled' --- use this, when we have state management in place!
     scrollPositionRestoration: 'top'
   })],
