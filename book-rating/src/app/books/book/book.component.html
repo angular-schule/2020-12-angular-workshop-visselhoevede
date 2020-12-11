@@ -32,6 +32,10 @@
     <button class="btn btn-primary"
       (click)="doRateUp()"
       [disabled]="disableUpButton"
-      >+1</button>
+    >+1</button>
+
+    <a
+      [routerLink]="['/books', book.isbn]"
+      class="btn btn-secondary ml-2">Details</a>
   </div>
 </div>
