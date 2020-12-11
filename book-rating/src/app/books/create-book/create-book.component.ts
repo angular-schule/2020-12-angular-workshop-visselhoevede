@@ -33,11 +33,11 @@ export class CreateBookComponent {
     return control.invalid && control.hasError(code);
   }
 
-  submitBook() {
-    var newBook = {
+  submitBook(): void {
+    const newBook = {
       ...this.bookForm.value,
       rating: 1
-    }
+    };
 
     this.create.emit(newBook);
 

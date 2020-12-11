@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'br-dashboard',
@@ -9,33 +10,13 @@ import { BookRatingService } from '../shared/book-rating.service';
 })
 export class DashboardComponent implements OnInit {
 
-  books: Book[];
+  books: Book[] = [];
 
-  constructor(private br: BookRatingService) {
+  constructor(private br: BookRatingService, private bs: BookStoreService) {
   }
 
   ngOnInit(): void {
-    this.books = [{
-      title: 'Angular',
-      isbn: '9783864906466',
-      description: 'Beschreibung',
-      rating: 5,
-      firstThumbnailUrl: 'http://covers.openlibrary.org/b/isbn/9783864906466-M.jpg'
-    },
-    {
-      title: 'Die Stadt der träumenden Bücher',
-      isbn: '9783492045490',
-      description: 'Super',
-      rating: 5,
-      firstThumbnailUrl: 'http://covers.openlibrary.org/b/isbn/9783492045490-M.jpg'
-    },
-    {
-      title: 'Der Herr der Ringe',
-      isbn: '9783608939842',
-      description: 'Toll',
-      rating: 5,
-      firstThumbnailUrl: 'http://covers.openlibrary.org/b/isbn/9783608960358-M.jpg'
-    }];
+    this.bs.getBooks().subscribe(books => this.books = books);
   }
 
   doRateDown(book: Book): void {
