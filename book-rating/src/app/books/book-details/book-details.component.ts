@@ -21,7 +21,10 @@ export class BookDetailsComponent implements OnInit {
     this.route.paramMap.pipe(
       map(paramMap => paramMap.get('isbn'))
     )
-    .subscribe(x => this.isbn = x);
+    .subscribe(x => {
+      this.isbn = x;
+      this.bs.getSingleBook(this.isbn).subscribe(b => this.book = b);
+    });
 
 
     // this.bs.getSingleBook(this.isbn)
