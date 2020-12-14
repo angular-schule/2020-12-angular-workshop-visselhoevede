@@ -24,11 +24,11 @@ export class GameScoreComponent implements OnInit {
     /******************************/
 
     this.score$.pipe(
-      // ????
+      scan((x, y) => x + y)
     ).subscribe(score => this.currentScore = score);
 
     this.score$.pipe(
-      /// ???
+      reduce((x, y) => x + y)
     ).subscribe(score => this.finalScore = score);
 
 
