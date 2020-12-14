@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, ReplaySubject } from 'rxjs';
-import { scan, reduce } from 'rxjs/operators';
+import { scan, reduce, map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'rxw-game-score',
@@ -12,7 +12,7 @@ export class GameScoreComponent implements OnInit {
   score$ = new Subject<number>();
 
   currentScore = 0;
-  finalScore: number;
+  finalScore: string;
 
   ngOnInit() {
 
@@ -31,9 +31,12 @@ export class GameScoreComponent implements OnInit {
     // 1. multipliere den Score mal 10
     // 2. filtere alle Werte aus, die größer gleich 500 sind
     // 3. bilde die Summe (einmal)
-    // 4. Knobelaufgabe: Zeige so viele 💩 an, wie Zahl groß war
+    // 4. Knobelaufgabe: Zeige so viele 💩 an, wie Zahl groß ist
     this.score$.pipe(
-      reduce((x, y) => x + y) // 3.
+      map(x => x * 10),
+      filter(x => x < 500),
+      reduce((x, y) => x + y),
+      map(n => '💩'.repeat(n))
     ).subscribe(score => this.finalScore = score);
 
 

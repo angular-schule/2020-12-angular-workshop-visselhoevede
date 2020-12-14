@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'br-book-details',
@@ -17,10 +18,14 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // very nasty solution! :-(
-    this.isbn = this.route.snapshot.paramMap.get('isbn');
-    this.bs.getSingleBook(this.isbn)
-      .subscribe(book => this.book = book);
+    this.route.paramMap.pipe(
+      map(paramMap => paramMap.get('isbn'))
+    )
+    .subscribe(x => this.isbn = x);
+
+
+    // this.bs.getSingleBook(this.isbn)
+    //   .subscribe(book => this.book = book);
   }
 
 }
