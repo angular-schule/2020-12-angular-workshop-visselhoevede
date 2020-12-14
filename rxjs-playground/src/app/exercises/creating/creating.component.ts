@@ -23,6 +23,17 @@ export class CreatingComponent implements OnInit {
 
     /******************************/
 
+    const observable = new Observable<string>(subscriber => {
+
+      subscriber.next('🤣');
+      subscriber.next('😎');
+      subscriber.next('😎');
+      subscriber.error('blubb');
+      subscriber.next('Hahaha!');
+    });
+
+
+
     // observer
     const observer = {
       next: e => this.log(e),
@@ -31,7 +42,8 @@ export class CreatingComponent implements OnInit {
     }
 
     // observable
-    of('😎', '🙃', '😜', '🤪').subscribe(observer);
+    // of('😎', '🙃', '😜', '🤪')
+    observable.subscribe(observer);
 
 
     /******************************/
