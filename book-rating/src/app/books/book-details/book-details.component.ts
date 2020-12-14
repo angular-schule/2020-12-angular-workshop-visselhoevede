@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
-import { map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'br-book-details',
@@ -20,11 +20,9 @@ export class BookDetailsComponent implements OnInit {
 
     this.route.paramMap.pipe(
       map(paramMap => paramMap.get('isbn')),
-      map(isbn => this.bs.getSingleBook(isbn))
+      mergeMap(isbn => this.bs.getSingleBook(isbn))
     )
-    .subscribe(x => {
-      x.subscribe(b => this.book = b);
-    });
+    .subscribe(b => this.book = b);
 
 
     // this.bs.getSingleBook(this.isbn)
