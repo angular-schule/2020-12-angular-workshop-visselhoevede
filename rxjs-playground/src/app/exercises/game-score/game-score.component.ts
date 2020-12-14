@@ -23,7 +23,15 @@ export class GameScoreComponent implements OnInit {
 
     /******************************/
 
-    
+    this.score$.pipe(
+      // ????
+    ).subscribe(score => this.currentScore = score);
+
+    this.score$.pipe(
+      /// ???
+    ).subscribe(score => this.finalScore = score);
+
+
     /******************************/
 
     this.score$.subscribe({
