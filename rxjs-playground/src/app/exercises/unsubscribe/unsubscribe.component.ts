@@ -41,7 +41,7 @@ export class UnsubscribeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.logStream$.next('DESTROY');
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 
 
