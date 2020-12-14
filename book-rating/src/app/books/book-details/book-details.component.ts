@@ -19,11 +19,11 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.paramMap.pipe(
-      map(paramMap => paramMap.get('isbn'))
+      map(paramMap => paramMap.get('isbn')),
+      map(isbn => this.bs.getSingleBook(isbn))
     )
     .subscribe(x => {
-      this.isbn = x;
-      this.bs.getSingleBook(this.isbn).subscribe(b => this.book = b);
+      x.subscribe(b => this.book = b);
     });
 
 
