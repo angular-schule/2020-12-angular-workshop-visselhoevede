@@ -3,7 +3,11 @@
   <small>{{ (book$ | async)?.title }}</small>
 </h2>
 
-<p>{{ (book$ | async)?.description }}</p>
+<button (click)="showDetails = !showDetails">Toggle Details</button>
+
+<p *ngIf="showDetails">
+  Details: {{ (book$ | async)?.description }}
+</p>
 
 <a routerLink="/books/9783864902079">Gehe zu 9783864902079</a><br>
 <a routerLink="/books/BOOM">Gehe zu BOOM!</a>
