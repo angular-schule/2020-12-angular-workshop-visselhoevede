@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
-import { concatMap, map, mergeMap, switchMap } from 'rxjs/operators';
+import { catchError, concatMap, map, mergeMap, switchMap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -20,7 +22,13 @@ export class BookDetailsComponent implements OnInit {
 
     this.route.paramMap.pipe(
       map(paramMap => paramMap.get('isbn')),
-      switchMap(isbn => this.bs.getSingleBook(isbn))
+      switchMap(isbn => this.bs.getSingleBook(isbn)),
+      catchError((err: HttpErrorResponse) => of({
+        isbn: '0',
+        title: 'Es kam zu einem Fehler!',
+        description: err.message,
+        rating: 1
+      }))
     )
     .subscribe(b => this.book = b);
 
