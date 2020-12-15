@@ -22,13 +22,15 @@ export class BookDetailsComponent implements OnInit {
 
     this.route.paramMap.pipe(
       map(paramMap => paramMap.get('isbn')),
-      switchMap(isbn => this.bs.getSingleBook(isbn)),
-      catchError((err: HttpErrorResponse) => of({
-        isbn: '0',
-        title: 'Es kam zu einem Fehler!',
-        description: err.message,
-        rating: 1
-      }))
+      switchMap(isbn => this.bs.getSingleBook(isbn).pipe(
+        catchError((err: HttpErrorResponse) => of({
+          isbn: '0',
+          title: 'Es kam zu einem Fehler!',
+          description: err.message,
+          rating: 1
+        }))
+      ))
+
     )
     .subscribe(b => this.book = b);
 
