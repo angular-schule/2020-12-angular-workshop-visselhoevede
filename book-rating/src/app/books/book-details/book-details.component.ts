@@ -1,10 +1,7 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
-import { catchError, map, share, shareReplay, switchMap } from 'rxjs/operators';
+import { select, Store } from '@ngrx/store';
 
-import { BookStoreService } from '../shared/book-store.service';
+import { selectSelectedBook } from '../store/book.selectors';
 
 @Component({
   selector: 'br-book-details',
@@ -13,19 +10,7 @@ import { BookStoreService } from '../shared/book-store.service';
 })
 export class BookDetailsComponent {
 
-  showDetails: false;
+  book$ = this.store.pipe(select(selectSelectedBook));
 
-  book$ = this.route.paramMap.pipe(
-    map(paramMap => paramMap.get('isbn')),
-    switchMap(isbn => this.bs.getSingleBook(isbn).pipe(
-      catchError((err: HttpErrorResponse) => of({
-        isbn: '0',
-        title: 'Es kam zu einem Fehler!',
-        description: err.message,
-        rating: 1
-      }))
-    ))
-  );
-
-  constructor(private route: ActivatedRoute, private bs: BookStoreService) { }
+  constructor(private store: Store) { }
 }

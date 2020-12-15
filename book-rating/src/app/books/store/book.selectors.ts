@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Book } from '../shared/book';
 import * as fromBook from './book.reducer';
+import { selectRouteParam } from './router.selectors';
 
 export const selectBookState = createFeatureSelector<fromBook.State>(
   fromBook.bookFeatureKey
@@ -14,6 +15,15 @@ export const selectBooksLoading = createSelector(
 export const selectBooks = createSelector(
   selectBookState,
   state => state.books
+);
+
+
+export const selectSelectedIsbn = selectRouteParam('isbn');
+
+export const selectSelectedBook = createSelector(
+  selectBooks,
+  selectSelectedIsbn,
+  (books, isbn) => books.find(book => book.isbn === isbn)
 );
 
 // only an example
