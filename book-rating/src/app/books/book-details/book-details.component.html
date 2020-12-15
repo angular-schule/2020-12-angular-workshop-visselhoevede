@@ -1,11 +1,9 @@
 <h2>
-  Book #{{ isbn }}<br>
-  <small>{{ book?.title }}</small>
+  Book #{{ (book$ | async)?.isbn }}<br>
+  <small>{{ (book$ | async)?.title }}</small>
 </h2>
 
-TODO: hübsch darstellen! 😃
-
-<p>{{ book?.description }}</p>
+<p>{{ (book$ | async)?.description }}</p>
 
 <a routerLink="/books/9783864902079">Gehe zu 9783864902079</a><br>
 <a routerLink="/books/BOOM">Gehe zu BOOM!</a>

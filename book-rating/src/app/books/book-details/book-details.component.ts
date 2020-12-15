@@ -1,42 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Book } from '../shared/book';
-import { BookStoreService } from '../shared/book-store.service';
-import { catchError, concatMap, map, mergeMap, switchMap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { catchError, map, share, switchMap } from 'rxjs/operators';
+
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'br-book-details',
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent {
 
-  isbn: string;
-  book: Book;
+  book$ = this.route.paramMap.pipe(
+    map(paramMap => paramMap.get('isbn')),
+    switchMap(isbn => this.bs.getSingleBook(isbn).pipe(
+      catchError((err: HttpErrorResponse) => of({
+        isbn: '0',
+        title: 'Es kam zu einem Fehler!',
+        description: err.message,
+        rating: 1
+      }))
+    )),
+    share()
+  );
 
   constructor(private route: ActivatedRoute, private bs: BookStoreService) { }
-
-  ngOnInit(): void {
-
-    this.route.paramMap.pipe(
-      map(paramMap => paramMap.get('isbn')),
-      switchMap(isbn => this.bs.getSingleBook(isbn).pipe(
-        catchError((err: HttpErrorResponse) => of({
-          isbn: '0',
-          title: 'Es kam zu einem Fehler!',
-          description: err.message,
-          rating: 1
-        }))
-      ))
-
-    )
-    .subscribe(b => this.book = b);
-
-
-    // this.bs.getSingleBook(this.isbn)
-    //   .subscribe(book => this.book = book);
-  }
-
 }
