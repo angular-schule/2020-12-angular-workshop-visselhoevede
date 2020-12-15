@@ -23,7 +23,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     // BooksModule, -- removed because of lazy loading
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({}, { }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
